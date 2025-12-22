@@ -12,6 +12,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-rosa: #dbaaa2;
+  --color-rosa-claro: #f2d5ce;
+  --color-gris-clarito: #ededed;
+  --color-verde-azulado: #527e7f;
+  --color-verde-claro: #b2cebf;
+  --text-shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --text-shadow-strong: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
