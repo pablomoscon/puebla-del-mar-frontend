@@ -21,7 +21,7 @@ export const useFilteredProducts = (products: Product[], filters: ProductFilter[
                         if (Array.isArray(value)) return value.some((v) => activeOptions.includes(v));
                         if (value != null) return activeOptions.includes(String(value));
                         return true;
-                    }
+                            return false;
                 }
             })
         );
