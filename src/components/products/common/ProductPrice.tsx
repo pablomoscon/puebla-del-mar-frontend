@@ -1,4 +1,4 @@
-import { InstallmentOption, ProductPriceProps } from '@/types/product.types';
+import { ProductPriceProps } from '@/types/product.types';
 import { CreditCard } from 'lucide-react';
 
 
@@ -21,7 +21,7 @@ const ProductPrice = ({
       {installments?.length ? (
         <div className={baseInstallmentsClass}>
           {installments.map(({ quantity, interestFree }) => {
-            const installmentPrice = price / quantity;
+            const installmentPrice = quantity !== 0 ? price / quantity : 0;
             return (
               <div
                 key={quantity}

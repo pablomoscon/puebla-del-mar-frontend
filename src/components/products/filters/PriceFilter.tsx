@@ -27,8 +27,8 @@ const ProductPriceFilter = ({
       </Slider.Root>
 
       <div className='flex justify-between text-sm text-gray-500'>
-        <span>${min}</span>
-        <span>${max}</span>
+        <span>{`$${min}`}</span>
+        <span>{`$${max}`}</span>
       </div>
     </div>
   );

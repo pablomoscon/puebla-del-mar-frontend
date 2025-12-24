@@ -50,18 +50,14 @@ export interface ProductFilterOption {
     checked: boolean;
 }
 
-export interface ProductFilterSection {
+export interface ProductFilter {
     id: string;
     name: string;
     options: ProductFilterOption[];
 }
 
 export interface ProductFiltersProps {
-    filters: {
-        id: string;
-        name: string;
-        options: { value: string; label: string; checked: boolean }[];
-    }[];
+    filters: ProductFilter[];
     onToggleOption: (sectionId: string, optionValue: string) => void;
     onPriceChange?: (min: number, max: number) => void;
 }
@@ -110,6 +106,7 @@ export type ProductCardProps = {
 
 export interface ProductPriceProps {
     price: number;
+    oldPrice?: number;
     installments?: InstallmentOption[];
     className?: string;
     priceClassName?: string;
