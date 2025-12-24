@@ -36,7 +36,7 @@ export const useFilteredProducts = (
                             return activeOptions.includes(String(value));
                         }
 
-                        return true;
+                        return false;
                     }
                 }
             })
