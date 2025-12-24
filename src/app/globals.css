@@ -5,6 +5,23 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+--color-black: #000000;
+  --color-white: #ffffff;
+  --color-green: #14532d;
+  --color-navy: #0f172a;
+  --color-beige: #e7e5e4;
+
+  --color-blue: #2563eb;
+  --color-lightblue: #7dd3fc;
+  --color-burgundy: #7c2d12;
+
+  --color-red: #dc2626;
+  --color-yellow: #facc15;
+  --color-orange: #fb923c;
+  --color-pink: #ec4899;
+  --color-purple: #8b5cf6;
+  --color-gray: #6b7280;
+  --color-brown: #78350f;
 }
 
 @theme inline {
@@ -32,4 +49,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background: #495568;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  background: #434d5e;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+/* Slider doble de precio personalizado */
+.price-range {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  /* más fina */
+  background: #e5e7eb;
+  /* gris claro */
+  border-radius: 2px;
 }

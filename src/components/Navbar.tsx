@@ -48,7 +48,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="text-verde-azulado hover:text-rosa transition-colors duration-200">
+            <a href="/productos" className="text-verde-azulado hover:text-rosa transition-colors duration-200">
               Productos
             </a>
           </li>

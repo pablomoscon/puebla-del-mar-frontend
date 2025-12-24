@@ -1,7 +1,7 @@
 "use client";
 
-import ButtonCustom from "@/components/ButtonCustom"
-import InputCustom from "@/components/InputCustom";
+import ButtonCustom from "@/components/ui/ButtonCustom"
+import InputCustom from "@/components/ui/InputCustom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
