@@ -1,7 +1,10 @@
 import { useMemo } from 'react';
 import { Product, ProductFilter } from '@/types/product.types';
 
-export const useFilteredProducts = (products: Product[], filters: ProductFilter[]) => {
+export const useFilteredProducts = (
+    products: Product[],
+    filters: ProductFilter[]
+) => {
     return useMemo(() => {
         return products.filter((product) =>
             filters.every((section) => {
@@ -13,15 +16,28 @@ export const useFilteredProducts = (products: Product[], filters: ProductFilter[
 
                 switch (section.id) {
                     case 'color':
-                        return product.colors?.some((color) => activeOptions.includes(color));
+                        return product.colors?.some((color) =>
+                            activeOptions.includes(color)
+                        );
+
                     case 'sizes':
-                        return product.sizes?.some((size) => activeOptions.includes(size));
+                        return product.sizes?.some((size) =>
+                            activeOptions.includes(size)
+                        );
+
                     default: {
                         const value = (product as any)[section.id];
-                        if (Array.isArray(value)) return value.some((v) => activeOptions.includes(v));
-                        if (value != null) return activeOptions.includes(String(value));
+
+                        if (Array.isArray(value)) {
+                            return value.some((v) => activeOptions.includes(v));
+                        }
+
+                        if (value != null) {
+                            return activeOptions.includes(String(value));
+                        }
+
                         return true;
-                            return false;
+                    }
                 }
             })
         );
