@@ -21,6 +21,7 @@ const FilterSection = ({
     <div className='border-b border-neutral-200 py-6'>
       {/* Header */}
       <button
+        type='button'
         onClick={() => setOpen((prev) => !prev)}
         className='
           flex w-full items-center justify-between

@@ -8,6 +8,7 @@ import { filtersData, sortOptions } from '@/data/filterData';
 import { ProductsProps } from '@/types/product.types';
 import ProductFilters from './filters/ProductFilters';
 import MobileFilters from './filters/MobileFilters';
+import { useFilteredProducts } from '@/hooks/useFilterProducts';
 
 const ProductsContent = ({ products }: ProductsProps) => {
   const [filters, setFilters] = useState(filtersData);
@@ -18,6 +19,8 @@ const ProductsContent = ({ products }: ProductsProps) => {
     setFilters((prev) => toggleFilterOption(prev, sectionId, value));
   };
 
+  const filteredProducts = useFilteredProducts(products, filters);
+
   return (
     <main className='mx-auto mt-30 max-w-7xl px-4 pb-20'>
       <div className='flex items-center justify-between border-b py-6'>
@@ -25,7 +28,6 @@ const ProductsContent = ({ products }: ProductsProps) => {
 
         <div className='flex items-center gap-4'>
           <SortMenu options={sortOptions} value={sort} onChange={setSort} />
-
           <button
             onClick={() => setMobileOpen(true)}
             className='lg:hidden text-sm text-gray-600'
@@ -35,12 +37,11 @@ const ProductsContent = ({ products }: ProductsProps) => {
         </div>
       </div>
 
-      {/* Layout */}
       <div className='grid grid-cols-1 gap-8 pt-6 lg:grid-cols-4'>
         <ProductFilters filters={filters} onToggleOption={handleToggleOption} />
 
         <div className='lg:col-span-3'>
-          <ProductGrid products={products} size='small' />
+          <ProductGrid products={filteredProducts} size='small' />
         </div>
       </div>
 
