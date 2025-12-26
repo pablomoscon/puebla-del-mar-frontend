@@ -1,8 +1,6 @@
-
 import { ProductFiltersProps } from '@/types/product.types';
 import FilterSection from './FilterSection';
 import ProductPriceFilter from './ProductPriceFilter';
-
 
 const ProductFilters = ({
   filters,
@@ -32,11 +30,15 @@ const ProductFilters = ({
         />
       ))}
 
-      <ProductPriceFilter
-        min={minPrice}
-        max={maxPrice}
-        onChange={(min, max) => onPriceChange?.(min, max)}
-      />
+      {Number.isFinite(minPrice) &&
+        Number.isFinite(maxPrice) &&
+        minPrice <= maxPrice && (
+          <ProductPriceFilter
+            min={minPrice}
+            max={maxPrice}
+            onChange={(min, max) => onPriceChange?.(min, max)}
+          />
+        )}
     </aside>
   );
 };

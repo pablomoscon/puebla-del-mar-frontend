@@ -26,7 +26,6 @@ const LoginPage = () => {
     });
 
     const onSubmit = (data: FormValues) => {
-    console.log(data);
   };
 
     return (

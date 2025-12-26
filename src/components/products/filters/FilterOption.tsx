@@ -1,7 +1,4 @@
 
-import { PRODUCT_COLOR_CLASS } from '@/lib/productColors';
-import { ProductColor } from '@/types/product.types';
-
 const FilterOption = ({
   id,
   label,

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import FilterOption from '../details/FilterOption';
+import FilterOption from './FilterOption';
 
 const MAX_VISIBLE = 3;
 
