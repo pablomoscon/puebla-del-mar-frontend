@@ -3,43 +3,44 @@ import { Product, ProductFilter } from '@/types/product.types';
 
 export const useFilteredProducts = (
     products: Product[],
-    filters: ProductFilter[]
+    filters: ProductFilter[],
+    priceRange?: [number, number] | null
 ) => {
     return useMemo(() => {
-        return products.filter((product) =>
-            filters.every((section) => {
-                const activeOptions = section.options
-                    .filter((opt) => opt.checked)
-                    .map((opt) => opt.value);
+        return products
+            .filter((product) => {
+            
+                if (!priceRange) return true;
 
-                if (activeOptions.length === 0) return true;
+                const [min, max] = priceRange;
 
-                switch (section.id) {
-                    case 'color':
-                        return product.colors?.some((color) =>
-                            activeOptions.includes(color)
-                        );
+                if (typeof product.price !== 'number') return false;
 
-                    case 'sizes':
-                        return product.sizes?.some((size) =>
-                            activeOptions.includes(size)
-                        );
-
-                    default: {
-                        const value = (product as any)[section.id];
-
-                        if (Array.isArray(value)) {
-                            return value.some((v) => activeOptions.includes(v));
-                        }
-
-                        if (value != null) {
-                            return activeOptions.includes(String(value));
-                        }
-
-                        return true;
-                    }
-                }
+                return product.price >= min && product.price <= max;
             })
-        );
-    }, [products, filters]);
+            .filter((product) =>
+                filters.every((section) => {
+                    const activeOptions = section.options
+                        .filter((opt) => opt.checked)
+                        .map((opt) => opt.value);
+
+                    if (activeOptions.length === 0) return true;
+
+                    switch (section.id) {
+                        case 'color':
+                            return product.colors.some((c) =>
+                                activeOptions.includes(c)
+                            );
+
+                        case 'sizes':
+                            return product.sizes.some((s) =>
+                                activeOptions.includes(s)
+                            );
+
+                        default:
+                            return true;
+                    }
+                })
+            );
+    }, [products, filters, priceRange]);
 };

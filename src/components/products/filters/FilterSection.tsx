@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import FilterOption from '../details/FilterOption';
+
+const MAX_VISIBLE = 3;
+
+type Option = {
+  value: string;
+  label: string;
+  checked: boolean;
+};
 
 const FilterSection = ({
   name,
@@ -12,51 +19,55 @@ const FilterSection = ({
 }: {
   name: string;
   sectionId: string;
-  options: { value: string; label: string; checked: boolean }[];
+  options: Option[];
   onToggleOption: (value: string) => void;
 }) => {
-  const [open, setOpen] = useState(true);
+  const hasChecked = options.some((o) => o.checked);
+  const [open, setOpen] = useState(hasChecked);
+
+  const visibleOptions = open ? options : options.slice(0, MAX_VISIBLE);
+
+  const canExpand = options.length > MAX_VISIBLE;
 
   return (
-    <div className='border-b border-neutral-200 py-6'>
-      {/* Header */}
-      <button
-        type='button'
-        onClick={() => setOpen((prev) => !prev)}
-        className='
-          flex w-full items-center justify-between
-          text-sm font-medium text-neutral-900
-          tracking-wide
-        '
-      >
-        <span>{name}</span>
-
-        <ChevronDown
-          size={16}
-          className={`
-            text-neutral-500
-            transition-transform duration-200
-            ${open ? 'rotate-180' : ''}
-          `}
-        />
-      </button>
+    <div className='border-b border-neutral-200 py-6 px-2'>
+      {/* Header (informativo, no interactivo) */}
+      <div className='text-[13px] font-medium tracking-[0.08em] text-neutral-900 uppercase'>
+        {name}
+      </div>
 
       {/* Options */}
-      <div
-        className={`
-          grid gap-3 overflow-hidden transition-all duration-200
-          ${open ? 'mt-4 max-h-125' : 'max-h-0'}
-        `}
-      >
-        {options.map((option) => (
-          <FilterOption
-            key={option.value}
-            id={`${sectionId}-${option.value}`}
-            label={option.label}
-            checked={option.checked}
-            onChange={() => onToggleOption(option.value)}
-          />
-        ))}
+      <div className='relative mt-4'>
+        <div className='grid gap-3'>
+          {visibleOptions.map((option) => (
+            <FilterOption
+              key={option.value}
+              id={`${sectionId}-${option.value}`}
+              label={option.label}
+              checked={option.checked}
+              onChange={() => onToggleOption(option.value)}
+            />
+          ))}
+        </div>
+
+        {/* Expand / collapse control */}
+        {canExpand && (
+          <button
+            title='expandFilters'
+            type='button'
+            onClick={() => setOpen((prev) => !prev)}
+            className='group mx-auto mt-4  flex items-center justify-center'
+          >
+            <div
+              className={`
+                h-2 w-22 mt-2 rounded-full bg-neutral-300 
+                transition-all duration-200
+                ${open ? 'scale-x-95 opacity-60' : 'animate-pulse'}
+                group-hover:bg-neutral-400  h-2 w-18
+              `}
+            />
+          </button>
+        )}
       </div>
     </div>
   );

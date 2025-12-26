@@ -1,14 +1,21 @@
 
 import { ProductFiltersProps } from '@/types/product.types';
 import FilterSection from './FilterSection';
-import PriceFilter from './PriceFilter';
+import ProductPriceFilter from './ProductPriceFilter';
+
 
 const ProductFilters = ({
   filters,
   onToggleOption,
   onPriceChange,
+  minPrice,
+  maxPrice,
   isMobile = false,
-}: ProductFiltersProps & { isMobile?: boolean }) => {
+}: ProductFiltersProps & {
+  isMobile?: boolean;
+  minPrice: number;
+  maxPrice: number;
+}) => {
   return (
     <aside
       className={`${
@@ -25,9 +32,9 @@ const ProductFilters = ({
         />
       ))}
 
-      <PriceFilter
-        min={0}
-        max={1000}
+      <ProductPriceFilter
+        min={minPrice}
+        max={maxPrice}
         onChange={(min, max) => onPriceChange?.(min, max)}
       />
     </aside>
