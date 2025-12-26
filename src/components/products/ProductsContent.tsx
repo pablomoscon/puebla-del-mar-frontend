@@ -80,6 +80,7 @@ const filteredProducts = useFilteredProducts(products, filters, priceRange);
           isMobile
           minPrice={minPrice}
           maxPrice={maxPrice}
+          onPriceChange={(min, max) => setPriceRange([min, max])}
         />
       </MobileFilters>
     </main>
