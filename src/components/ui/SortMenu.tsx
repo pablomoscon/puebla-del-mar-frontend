@@ -19,9 +19,9 @@ const SortMenu = ({ options, value, onChange }: SortMenuProps) => {
           transition
         '
       >
-        <span className='text-neutral-500'>Ordenar:</span>
+        <span className='uppercase text-neutral-900 transition'>Ordenar:</span>
         <span>{selected?.label}</span>
-        <ChevronDown size={14} className='text-neutral-500' />
+        <ChevronDown size={14} className='text-neutral-500 ' />
       </summary>
 
       <div
@@ -38,20 +38,22 @@ const SortMenu = ({ options, value, onChange }: SortMenuProps) => {
                 type='button'
                 onClick={() => onChange(option.value)}
                 className={`
-                  flex w-full items-center justify-between
+                  flex w-full items-start text-start
                   px-4 py-2 text-sm
                   hover:bg-neutral-100
                   transition
+                  uppercase
+
                   ${
                     value === option.value
                       ? 'font-medium text-black'
-                      : 'text-neutral-600'
+                      : 'text-neutral-600 '
                   }
                 `}
               >
                 {option.label}
                 {value === option.value && (
-                  <span className='text-xs text-neutral-400'>●</span>
+                  <span className='text-xs text-neutral-400 uppercase text-start'>●</span>
                 )}
               </button>
             </li>

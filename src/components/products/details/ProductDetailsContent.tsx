@@ -4,18 +4,13 @@ import { useState } from 'react';
 import ProductInfo from './ProductInfo';
 import RelatedProducts from './RelatedProducts';
 import { ProductDetailsContentProps } from '@/types/product.types';
+import { sortOptions } from '@/data/filterData';
 
 const ProductDetailsContent = ({
   product,
   relatedProducts = [],
 }: ProductDetailsContentProps) => {
   const [sort, setSort] = useState('popular');
-
-  const sortOptions = [
-    { label: 'Más populares', value: 'popular' },
-    { label: 'Precio ascendente', value: 'price-asc' },
-    { label: 'Precio descendente', value: 'price-desc' },
-  ];
 
   return (
     <main className='mx-auto max-w-7xl pt-20 pb-40'>

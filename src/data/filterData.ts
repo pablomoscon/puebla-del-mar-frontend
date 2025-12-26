@@ -1,3 +1,5 @@
+import { ProductColor, ProductFilter, ProductFilterOption } from "@/types/product.types";
+
 export const sortOptions = [
     { value: 'popular', label: 'Más popular' },
     { value: 'rating', label: 'Mejor ranking' },
@@ -6,15 +8,8 @@ export const sortOptions = [
     { value: 'price-desc', label: 'Precio: mayor a menor' },
 ];
 
-export const subCategories = [
-    'Totes',
-    'Backpacks',
-    'Travel Bags',
-    'Hip Bags',
-    'Laptop Sleeves',
-]
 
-export const filtersData = [
+export const filtersData: ProductFilter[] = [
     {
         id: 'serie',
         name: 'Serie (Colección)',
@@ -27,18 +22,28 @@ export const filtersData = [
             { value: 'night_run', label: 'Night Run', checked: false },
         ],
     },
+
     {
         id: 'color',
         name: 'Color',
+
+        
         options: [
+            { value: 'black', label: 'Negro', checked: false },
             { value: 'white', label: 'Blanco', checked: false },
             { value: 'beige', label: 'Beige', checked: false },
             { value: 'blue', label: 'Azul', checked: false },
-            { value: 'brown', label: 'Marrón', checked: false },
+            { value: 'lightblue', label: 'Celeste', checked: false },
+            { value: 'navy', label: 'Azul marino', checked: false },
             { value: 'green', label: 'Verde', checked: false },
+            { value: 'brown', label: 'Marrón', checked: false },
+            { value: 'burgundy', label: 'Bordó', checked: false },
+            { value: 'pink', label: 'Rosa', checked: false },
             { value: 'purple', label: 'Morado', checked: false },
-        ],
+            { value: 'gray', label: 'Gris', checked: false },
+        ] satisfies ProductFilterOption<ProductColor>[],
     },
+
     {
         id: 'category',
         name: 'Categoría',
@@ -51,6 +56,7 @@ export const filtersData = [
             { value: 'accessories', label: 'Accesorios', checked: false },
         ],
     },
+
     {
         id: 'sizes',
         name: 'Talle',
@@ -62,4 +68,4 @@ export const filtersData = [
             { value: '5', label: '5', checked: false },
         ],
     },
-]
+];

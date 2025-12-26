@@ -44,16 +44,16 @@ export interface ProductsProps {
     products: Product[];
 }
 
-export interface ProductFilterOption {
-    value: string;
+export interface ProductFilterOption<T = string> {
+    value: T;
     label: string;
     checked: boolean;
 }
 
-export interface ProductFilter {
+export interface ProductFilter<T = string> {
     id: string;
     name: string;
-    options: ProductFilterOption[];
+    options: ProductFilterOption<T>[];
 }
 
 export interface ProductFiltersProps {
@@ -68,6 +68,7 @@ export interface ProductPriceFilterProps {
     max: number;
     onChange: (min: number, max: number) => void;
 }
+
 
 export interface ProductDetailsContentProps {
     product: Product;
@@ -119,3 +120,4 @@ export interface RelatedProductsProps {
     sort: string;
     setSort: (value: string) => void;
 }
+

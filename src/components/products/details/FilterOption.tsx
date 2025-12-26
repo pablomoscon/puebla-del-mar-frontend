@@ -1,3 +1,7 @@
+
+import { PRODUCT_COLOR_CLASS } from '@/lib/productColors';
+import { ProductColor } from '@/types/product.types';
+
 const FilterOption = ({
   id,
   label,
@@ -8,11 +12,12 @@ const FilterOption = ({
   label: string;
   checked: boolean;
   onChange: () => void;
+
 }) => {
   return (
     <label
       htmlFor={id}
-      className='flex items-center gap-3 text-sm text-gray-600'
+      className='flex items-center gap-3 text-xs text-gray-600 tracking-[0.08em] uppercase'
     >
       <input
         id={id}
@@ -24,6 +29,6 @@ const FilterOption = ({
       {label}
     </label>
   );
-}
+};
 
 export default FilterOption;
