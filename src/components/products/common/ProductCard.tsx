@@ -22,10 +22,10 @@ const ProductCard = ({ product, size }: ProductCardProps) => {
         <div
           className={`
             relative w-full bg-neutral-100
-           ${isSmall ? 'h-64 w-full' : 'h-96 w-60'}
+           ${isSmall ? 'h-64 w-full' : 'h-72 w-60'}
           `}
         >
-          {image && <ProductImage src={image} alt={product.title} priority />}
+          {image && <ProductImage src={image} alt={product.title}/>}
           <ProductFavoriteButton active={product.isFavorite} />
         </div>
       </Link>

@@ -23,10 +23,7 @@ const MobileFilters = ({
 
       {/* Panel */}
       <div
-        className='absolute right-0 top-0 h-full w-80 bg-white
-          shadow-xl
-          flex flex-col
-          py-4 px-1'
+        className='absolute right-0 top-0 h-full w-80 bg-white shadow-xl flex flex-col py-4 px-1'
       >
         {/* Header */}
         <div className='relative flex items-center justify-center py-4 border-b border-neutral-200'>
